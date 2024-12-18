@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform } from "react-native";
+import { Image, StyleSheet, Platform, View } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -14,52 +14,55 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: "#fff", dark: "#fff" }}
       headerImage={
         <Image
-          source={require("@/assets/images/edufix.png")}
+          source={require("@/assets/images/test.png")}
           style={styles.reactLogo}
         />
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Edufix</ThemedText>
+        <ThemedText type="title">EduFix</ThemedText>
         {/* <HelloWave /> */}
       </ThemedView>
-      <Text style={styles.title}>Welcome, {user?.username}!</Text>
-      <Text style={styles.subtitle}>You are now logged in.</Text>
-      <ThemedText>fixing education in a new way</ThemedText>
-      {/* <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: "cmd + d",
-              android: "cmd + m",
-              web: "F12",
-            })}
-          </ThemedText>{" "}
-          to open developer tools.
+
+      <View>
+        <Text style={styles.title}>
+          Welcome {user?.username} <HelloWave />
+        </Text>
+        <ThemedText style={styles.subtitle}>
+          Fixing Education in a New Way 🚀
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this
-          starter app.
+
+        <ThemedText style={styles.content}>
+          EduFix is the revolutionary platform that redefines how education is
+          delivered and experienced. Whether you're a student aiming for
+          academic success, a teacher looking to inspire, or a curious mind
+          eager to learn, EduFix is here to make it happen.
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{" "}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+
+        <View style={styles.features}>
+          <Text style={styles.featureTitle}>What Makes EduFix Special?</Text>
+          <ThemedText style={styles.featureItem}>
+            🛠 Report and Monitor Infrastructure
+          </ThemedText>
+          <ThemedText style={styles.featureItem}>
+            💰 Track Budget Allocations
+          </ThemedText>
+          <ThemedText style={styles.featureItem}>
+            🤝 Support Schools Through Crowdfunding
+          </ThemedText>
+          <ThemedText style={styles.featureItem}>
+            🔍 Optimize Resources Efficiently
+          </ThemedText>
+          <ThemedText style={styles.featureItem}>
+            📊 Gather Feedback from Parents and Teachers
+          </ThemedText>
+        </View>
+
+        <ThemedText style={styles.cta}>
+          Join the EduFix community today and take the first step towards
+          smarter, more enjoyable learning. Let's fix education – together.
         </ThemedText>
-      </ThemedView> */}
+      </View>
     </ParallaxScrollView>
   );
 }
@@ -74,8 +77,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   reactLogo: {
-    height: 178,
-    width: 290,
+    height: 170,
+    width: "100%",
     bottom: 0,
     left: 0,
     position: "absolute",
@@ -89,4 +92,19 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: "gray",
   },
+  title: { fontSize: 28, fontWeight: "bold", marginBottom: 10, color: "#333" },
+  subtitle: { fontSize: 18, marginBottom: 20, color: "#555" },
+  content: { fontSize: 16, marginBottom: 20, lineHeight: 24, color: "#444" },
+  features: { marginBottom: 20 },
+  featureTitle: { fontSize: 20, fontWeight: "bold", marginBottom: 10 },
+  featureItem: { fontSize: 16, marginVertical: 4, color: "#666" },
+  cta: { fontSize: 18, fontWeight: "bold", textAlign: "center", marginTop: 10 },
+  getStartedButton: {
+    backgroundColor: "#ea495c",
+    padding: 12,
+    borderRadius: 8,
+    alignItems: "center",
+    marginTop: 20,
+  },
+  buttonText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
 });

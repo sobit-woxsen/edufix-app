@@ -29,6 +29,13 @@ export default function CrowdfundLayout() {
       />
 
       <Stack.Screen
+        name="[id]/fund-campaign"
+        options={({ route }) => ({
+          title: `Campaign ${route?.params?.id}`,
+        })}
+      />
+
+      <Stack.Screen
         name="[id]/edit"
         options={({ route }) => ({
           title: `Edit Campaign ${route?.params?.id}`,

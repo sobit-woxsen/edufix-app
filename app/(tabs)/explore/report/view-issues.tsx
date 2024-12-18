@@ -5,8 +5,6 @@ import {
   FlatList,
   TouchableOpacity,
   StyleSheet,
-  TextInput,
-  ScrollView,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { useReportContext } from "./ReportContext";
@@ -66,7 +64,7 @@ const AllIssuesScreen = () => {
   );
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>All Issues</Text>
       <FlatList
         data={reports}
@@ -74,7 +72,7 @@ const AllIssuesScreen = () => {
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.listContainer}
       />
-    </ScrollView>
+    </View>
   );
 };
 
@@ -101,8 +99,8 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 3,
+    shadowRadius: 1,
+    elevation: 1,
   },
   cardHeader: {
     flexDirection: "row",
@@ -128,9 +126,9 @@ const styles = StyleSheet.create({
   statusBadge: (status) => ({
     fontSize: 12,
     color: "#fff",
-    paddingVertical: 2,
+    paddingVertical: 4,
     paddingHorizontal: 8,
-    borderRadius: 12,
+    borderRadius: 5,
     backgroundColor:
       status === "open"
         ? "#FFB74D"
@@ -154,14 +152,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   assignButton: {
-    backgroundColor: "#4A90E2",
-    paddingVertical: 10,
+    backgroundColor: "#ea495c",
+    paddingVertical: 16,
     borderRadius: 8,
     alignItems: "center",
   },
   resolveButton: {
     backgroundColor: "#34C759",
-    paddingVertical: 10,
+    paddingVertical: 16,
     borderRadius: 8,
     alignItems: "center",
   },

@@ -39,9 +39,13 @@ type BudgetContextType = {
 
 // Updated dummy data
 const dummySchools: School[] = [
-  { id: "1", name: "Springfield Elementary" },
-  { id: "2", name: "Riverside High School" },
-  { id: "3", name: "Central Academy" },
+  { id: "1", name: "School of Business" },
+  { id: "2", name: "School of Technology" },
+  { id: "3", name: "School of Sciences" },
+  { id: "4", name: "School of Arts and Design" },
+  { id: "5", name: "School of Architecture and Planning" },
+  { id: "6", name: "School of Liberal Arts and Humanities" },
+  { id: "7", name: "School of Law" },
 ];
 
 const dummyBudgets: Budget[] = [

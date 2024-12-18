@@ -1,122 +1,3 @@
-// import React, { createContext, useState, useContext } from "react";
-
-// interface Report {
-//   id: string;
-//   title?: string;
-//   description: string;
-//   category: string;
-//   location: string;
-//   image: string;
-//   status: "open" | "assigned" | "resolved";
-//   assignedTo?: string;
-// }
-
-// interface ReportContextType {
-//   reports: Report[];
-//   addReport: (report: Omit<Report, "id" | "status">) => void;
-//   assignIssue: (id: string, assignedTo: string) => void;
-//   resolveIssue: (id: string) => void;
-// }
-
-// const ReportContext = createContext<ReportContextType | undefined>(undefined);
-
-// // Dummy reports data
-// const dummyReports: Report[] = [
-//   {
-//     id: "1",
-//     description: "Pothole on Main Street",
-//     category: "Infrastructure",
-//     location: "Main Street, near City Hall",
-//     image: "https://example.com/pothole.jpg",
-//     status: "open",
-//   },
-//   {
-//     id: "2",
-//     description: "Broken streetlight",
-//     category: "Maintenance",
-//     location: "Corner of Elm and Oak",
-//     image: "https://example.com/streetlight.jpg",
-//     status: "assigned",
-//     assignedTo: "John Doe",
-//   },
-//   {
-//     id: "3",
-//     description: "Graffiti on public building",
-//     category: "Vandalism",
-//     location: "Community Center",
-//     image: "https://example.com/graffiti.jpg",
-//     status: "resolved",
-//   },
-//   {
-//     id: "4",
-//     description: "Overflowing trash bin",
-//     category: "Sanitation",
-//     location: "Central Park",
-//     image: "https://example.com/trash.jpg",
-//     status: "open",
-//   },
-//   {
-//     id: "5",
-//     description: "Fallen tree blocking sidewalk",
-//     category: "Environment",
-//     location: "Maple Avenue",
-//     image: "https://example.com/fallen-tree.jpg",
-//     status: "assigned",
-//     assignedTo: "Jane Smith",
-//   },
-// ];
-
-// const ReportProvider: React.FC<{ children: React.ReactNode }> = ({
-//   children,
-// }) => {
-//   const [reports, setReports] = useState<Report[]>(dummyReports);
-
-//   const addReport = (report: Omit<Report, "id" | "status">) => {
-//     const newReport: Report = {
-//       ...report,
-//       id: Date.now().toString(),
-//       status: "open",
-//     };
-//     setReports([...reports, newReport]);
-//   };
-
-//   const assignIssue = (id: string, assignedTo: string) => {
-//     setReports(
-//       reports.map((report) =>
-//         report.id === id
-//           ? { ...report, status: "assigned", assignedTo }
-//           : report
-//       )
-//     );
-//   };
-
-//   const resolveIssue = (id: string) => {
-//     setReports(
-//       reports.map((report) =>
-//         report.id === id ? { ...report, status: "resolved" } : report
-//       )
-//     );
-//   };
-
-//   return (
-//     <ReportContext.Provider
-//       value={{ reports, addReport, assignIssue, resolveIssue }}
-//     >
-//       {children}
-//     </ReportContext.Provider>
-//   );
-// };
-
-// export const useReportContext = () => {
-//   const context = useContext(ReportContext);
-//   if (context === undefined) {
-//     throw new Error("useReportContext must be used within a ReportProvider");
-//   }
-//   return context;
-// };
-
-// export default ReportProvider;
-
 import React, { createContext, useState, useContext } from "react";
 
 interface Report {
@@ -142,54 +23,104 @@ const ReportContext = createContext<ReportContextType | undefined>(undefined);
 
 // Dummy assignees and reports data
 const dummyAssignees: string[] = ["John Doe", "Jane Smith", "Mark Wilson"];
+
 const dummyReports: Report[] = [
   {
     id: "1",
-    title: "Fix Pothole on Main Street",
-    description: "A large pothole near City Hall is causing traffic issues.",
-    category: "Infrastructure",
-    location: "Main Street, near City Hall",
-    image: "https://example.com/pothole.jpg",
+    title: "Fix Broken Classroom Door",
+    description: "The door of Room 101 is broken and does not close properly.",
+    category: "Maintenance",
+    location: "Classroom 101, Main Building",
+    image: "https://example.com/broken-door.jpg",
     status: "open",
   },
   {
     id: "2",
-    title: "Repair Broken Streetlight",
-    description: "Streetlight is broken at the corner of Elm and Oak.",
-    category: "Maintenance",
-    location: "Corner of Elm and Oak",
-    image: "https://example.com/streetlight.jpg",
+    title: "Repair Playground Equipment",
+    description: "One of the swings in the playground is broken and unsafe.",
+    category: "Safety",
+    location: "School Playground",
+    image: "https://example.com/broken-swing.jpg",
     status: "assigned",
-    assignedTo: "John Doe",
+    assignedTo: "Maintenance Team",
   },
   {
     id: "3",
-    title: "Remove Graffiti on Public Building",
-    description: "Graffiti on the wall of the Community Center.",
-    category: "Vandalism",
-    location: "Community Center",
-    image: "https://example.com/graffiti.jpg",
+    title: "Paint Faded Wall in Corridor",
+    description:
+      "The wall in the corridor near the cafeteria needs repainting.",
+    category: "Aesthetics",
+    location: "Cafeteria Corridor, Second Floor",
+    image: "https://example.com/faded-wall.jpg",
     status: "resolved",
   },
   {
     id: "4",
-    title: "Clean Overflowing Trash Bin",
+    title: "Clean Overflowing Trash Bins",
     description:
-      "Trash bin in Central Park is overflowing and needs attention.",
+      "The trash bins in the lunch area are overflowing and need attention.",
     category: "Sanitation",
-    location: "Central Park",
-    image: "https://example.com/trash.jpg",
+    location: "Lunch Area, Ground Floor",
+    image: "https://example.com/trash-bin.jpg",
     status: "open",
   },
   {
     id: "5",
-    title: "Remove Fallen Tree Blocking Sidewalk",
-    description: "A tree has fallen on Maple Avenue, blocking the sidewalk.",
-    category: "Environment",
-    location: "Maple Avenue",
-    image: "https://example.com/fallen-tree.jpg",
+    title: "Fix Air Conditioner in Computer Lab",
+    description: "The air conditioner in the computer lab is not working.",
+    category: "Facilities",
+    location: "Computer Lab, Room 203",
+    image: "https://example.com/air-conditioner.jpg",
     status: "assigned",
-    assignedTo: "Jane Smith",
+    assignedTo: "Facility Manager",
+  },
+  {
+    id: "6",
+    title: "Repair Broken Desk",
+    description: "A student desk in Room 305 is broken and unstable.",
+    category: "Maintenance",
+    location: "Classroom 305, Third Floor",
+    image: "https://example.com/broken-desk.jpg",
+    status: "open",
+  },
+  {
+    id: "7",
+    title: "Remove Graffiti on School Wall",
+    description: "Graffiti on the back wall of the school building.",
+    category: "Vandalism",
+    location: "Back Wall, Near Parking Lot",
+    image: "https://example.com/school-graffiti.jpg",
+    status: "resolved",
+  },
+  {
+    id: "8",
+    title: "Replace Burnt-Out Light Bulbs",
+    description: "Several light bulbs in the library are not working.",
+    category: "Electrical",
+    location: "School Library, First Floor",
+    image: "https://example.com/burnt-bulbs.jpg",
+    status: "open",
+  },
+  {
+    id: "9",
+    title: "Fix Leaking Faucet in Restroom",
+    description:
+      "The faucet in the boys' restroom on the second floor is leaking.",
+    category: "Plumbing",
+    location: "Boys' Restroom, Second Floor",
+    image: "https://example.com/leaking-faucet.jpg",
+    status: "assigned",
+    assignedTo: "Plumber",
+  },
+  {
+    id: "10",
+    title: "Fix Cracked Window in Science Lab",
+    description:
+      "A window in the science lab is cracked and poses a safety risk.",
+    category: "Safety",
+    location: "Science Lab, Room 210",
+    image: "https://example.com/cracked-window.jpg",
+    status: "open",
   },
 ];
 

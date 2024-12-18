@@ -35,11 +35,11 @@ export default function BudgetDetailScreen() {
       </Text> */}
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Total Allocated</Text>
+        <Text style={styles.cardTitle}>Total Budget Allocated</Text>
         <Text style={styles.cardAmount}>
           ${budget.totalAmount.toLocaleString()}
         </Text>
-        <Text style={styles.cardSubtitle}>Remaining</Text>
+        <Text style={styles.cardSubtitle}>Remaining Budget</Text>
         <Text style={styles.cardAmountSmall}>
           ${budget.remainingAmount.toLocaleString()}
         </Text>
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 1,
   },
   cardAmount: {
     color: "black",

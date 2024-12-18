@@ -17,7 +17,7 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const DEFAULT_USERNAME = "demo";
-const DEFAULT_PASSWORD = "password123";
+const DEFAULT_PASSWORD = "123";
 
 export function useAuth() {
   return useContext(AuthContext);
@@ -28,6 +28,10 @@ function useProtectedRoute(user: User | null) {
   const router = useRouter();
 
   useEffect(() => {
+    if (segments[0] === "signup") {
+      return;
+    }
+
     if (!user) {
       router.replace("/login");
     } else if (segments[0] !== "(tabs)") {

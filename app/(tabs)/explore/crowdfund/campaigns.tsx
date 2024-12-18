@@ -100,8 +100,8 @@
 //       > */}
 //       <Text style={styles.campaignName}>{item.name}</Text>
 //       <Text>Status: {item.status}</Text>
-//       <Text>Target: {item.targetAmount} ETH</Text>
-//       <Text>Collected: {item.amountCollected} ETH</Text>
+//       <Text>Target: {item.targetAmount} RS. </Text>
+//       <Text>Collected: {item.amountCollected} RS. </Text>
 //       {/* </TouchableOpacity> */}
 //     </Link>
 //   );
@@ -165,10 +165,10 @@ export default function CampaignList() {
           <Text style={styles.campaignName}>{item.name}</Text>
           <Text style={styles.campaignText}>Status: {item.status}</Text>
           <Text style={styles.campaignText}>
-            Target: {item.targetAmount} ETH
+            Target: {item.targetAmount} RS.
           </Text>
           <Text style={styles.campaignCollected}>
-            Collected: {item.amountCollected} ETH
+            Collected: {item.amountCollected} RS.
           </Text>
         </View>
       </TouchableOpacity>

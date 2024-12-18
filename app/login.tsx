@@ -1,97 +1,3 @@
-// import React, { useState } from "react";
-// import {
-//   View,
-//   TextInput,
-//   Button,
-//   StyleSheet,
-//   Image,
-//   Text,
-//   TouchableOpacity,
-// } from "react-native";
-// import { Link } from "expo-router";
-// import { useAuth } from "@/hooks/useAuth";
-
-// export default function LoginScreen() {
-//   const [username, setUsername] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [error, setError] = useState("");
-//   const { signIn } = useAuth();
-
-//   const handleLogin = async () => {
-//     setError("");
-//     const success = await signIn(username, password);
-//     if (!success) {
-//       setError("Invalid username or password");
-//     }
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       <Image
-//         source={require("../assets/images/edufix.png")}
-//         style={styles.logo}
-//       />
-//       <TextInput
-//         style={styles.input}
-//         placeholder="Username"
-//         value={username}
-//         onChangeText={setUsername}
-//       />
-//       <TextInput
-//         style={styles.input}
-//         placeholder="Password"
-//         value={password}
-//         onChangeText={setPassword}
-//         secureTextEntry
-//       />
-//       {error ? <Text style={styles.error}>{error}</Text> : null}
-//       <Button title="Login" onPress={handleLogin} />
-//       <View style={styles.signupContainer}>
-//         <Text>Don't have an account? </Text>
-//         <Link href="/signup" asChild>
-//           <TouchableOpacity>
-//             <Text style={styles.signupLink}>Sign up</Text>
-//           </TouchableOpacity>
-//         </Link>
-//       </View>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     padding: 16,
-//   },
-//   logo: {
-//     width: 100,
-//     height: 100,
-//     alignSelf: "center",
-//     marginBottom: 20,
-//   },
-//   input: {
-//     height: 40,
-//     borderColor: "gray",
-//     borderWidth: 1,
-//     marginBottom: 12,
-//     paddingHorizontal: 8,
-//   },
-//   error: {
-//     color: "red",
-//     marginBottom: 12,
-//   },
-//   signupContainer: {
-//     flexDirection: "row",
-//     justifyContent: "center",
-//     marginTop: 20,
-//   },
-//   signupLink: {
-//     color: "blue",
-//     textDecorationLine: "underline",
-//   },
-// });
-
 import React, { useState } from "react";
 import {
   View,
@@ -121,7 +27,7 @@ export default function LoginScreen() {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../assets/images/edufix.png")}
+        source={require("../assets/images/test.png")}
         style={styles.logo}
       />
       <Text style={styles.title}>Welcome Back</Text>
@@ -173,8 +79,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: "100%",
+    // height: 100,
     alignSelf: "center",
     marginBottom: 20,
   },
@@ -206,7 +112,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   submitButton: {
-    backgroundColor: "#4A90E2",
+    backgroundColor: "#ea495c",
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
@@ -223,7 +129,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   signupLink: {
-    color: "#4A90E2",
+    color: "#ea495c",
     fontWeight: "bold",
     textDecorationLine: "underline",
   },

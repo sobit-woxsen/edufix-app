@@ -240,8 +240,8 @@ const styles = StyleSheet.create({
     textAlignVertical: "top",
   },
   submitButton: {
-    backgroundColor: "#4A90E2",
-    paddingVertical: 12,
+    backgroundColor: "#ea495c",
+    paddingVertical: 8,
     borderRadius: 8,
     alignItems: "center",
     marginTop: 20,

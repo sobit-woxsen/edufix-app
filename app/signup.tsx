@@ -1,81 +1,3 @@
-// import React, { useState } from "react";
-// import { View, TextInput, Button, StyleSheet, Image, Text } from "react-native";
-// import { useRouter } from "expo-router";
-// import { useAuth } from "@/hooks/useAuth";
-
-// export default function SignupScreen() {
-//   const [username, setUsername] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [error, setError] = useState("");
-//   const { signUp } = useAuth();
-//   const router = useRouter();
-
-//   const handleSignup = async () => {
-//     if (username.length < 3 || password.length < 6) {
-//       setError(
-//         "Username must be at least 3 characters and password at least 6 characters"
-//       );
-//       return;
-//     }
-
-//     const success = await signUp(username, password);
-//     if (success) {
-//       router.replace("/login");
-//     } else {
-//       setError("Username already exists");
-//     }
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       <Image
-//         source={require("../assets/images/edufix.png")}
-//         style={styles.logo}
-//       />
-//       <TextInput
-//         style={styles.input}
-//         placeholder="Username"
-//         value={username}
-//         onChangeText={setUsername}
-//       />
-//       <TextInput
-//         style={styles.input}
-//         placeholder="Password"
-//         value={password}
-//         onChangeText={setPassword}
-//         secureTextEntry
-//       />
-//       {error ? <Text style={styles.error}>{error}</Text> : null}
-//       <Button title="Sign Up" onPress={handleSignup} />
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     padding: 16,
-//   },
-//   logo: {
-//     width: 100,
-//     height: 100,
-//     alignSelf: "center",
-//     marginBottom: 20,
-//   },
-//   input: {
-//     height: 40,
-//     borderColor: "gray",
-//     borderWidth: 1,
-//     marginBottom: 12,
-//     paddingHorizontal: 8,
-//   },
-//   error: {
-//     color: "red",
-//     marginBottom: 12,
-//   },
-// });
-
 import React, { useState } from "react";
 import {
   View,
@@ -85,15 +7,28 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
 import { useAuth } from "@/hooks/useAuth";
+import { Link } from "expo-router";
 
 export default function SignupScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState(""); // State for user role
+  const [school, setSchool] = useState(""); // State for school selection
   const [error, setError] = useState("");
   const { signUp } = useAuth();
   const router = useRouter();
+
+  // Dummy schools list
+  const schools = [
+    "Springfield High School",
+    "Riverdale High School",
+    "Sunnydale Academy",
+    "Greenwood International",
+    "Starlight Academy",
+  ];
 
   const handleSignup = async () => {
     if (username.length < 3 || password.length < 6) {
@@ -103,7 +38,17 @@ export default function SignupScreen() {
       return;
     }
 
-    const success = await signUp(username, password);
+    if (!role) {
+      setError("Please select a role");
+      return;
+    }
+
+    if ((role === "school" || role === "teacher") && !school) {
+      setError("Please select a school");
+      return;
+    }
+
+    const success = await signUp({ username, password, role, school }); // Pass school to signup
     if (success) {
       router.replace("/login");
     } else {
@@ -114,7 +59,7 @@ export default function SignupScreen() {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../assets/images/edufix.png")}
+        source={require("../assets/images/test.png")}
         style={styles.logo}
       />
       <Text style={styles.title}>Create an Account</Text>
@@ -140,11 +85,57 @@ export default function SignupScreen() {
         />
       </View>
 
+      <View style={styles.formGroup}>
+        <Text style={styles.label}>Select Your Role</Text>
+        <Picker
+          selectedValue={role}
+          onValueChange={(itemValue) => {
+            setRole(itemValue);
+            if (itemValue !== "teacher" && itemValue !== "school") {
+              setSchool(""); // Clear school if the role changes
+            }
+          }}
+          style={styles.input}
+        >
+          <Picker.Item label="Select a role" value="" />
+          <Picker.Item label="Administrator" value="administrator" />
+          <Picker.Item label="Teacher" value="teacher" />
+          <Picker.Item label="Parent" value="parent" />
+          <Picker.Item label="School" value="school" />
+          <Picker.Item label="Corporate Sponsor" value="corporate_sponsor" />
+        </Picker>
+      </View>
+
+      {(role === "school" || role === "teacher") && (
+        <View style={styles.formGroup}>
+          <Text style={styles.label}>Select Your School</Text>
+          <Picker
+            selectedValue={school}
+            onValueChange={(itemValue) => setSchool(itemValue)}
+            style={styles.input}
+          >
+            <Picker.Item label="Select a school" value="" />
+            {schools.map((schoolName, index) => (
+              <Picker.Item key={index} label={schoolName} value={schoolName} />
+            ))}
+          </Picker>
+        </View>
+      )}
+
       {error ? <Text style={styles.error}>{error}</Text> : null}
 
       <TouchableOpacity style={styles.submitButton} onPress={handleSignup}>
         <Text style={styles.submitButtonText}>Sign Up</Text>
       </TouchableOpacity>
+
+      <View style={styles.signupContainer}>
+        <Text>Already have an account? </Text>
+        <Link href="/login" asChild>
+          <TouchableOpacity>
+            <Text style={styles.signupLink}>Log in</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
     </View>
   );
 }
@@ -157,8 +148,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: "100%",
     alignSelf: "center",
     marginBottom: 20,
   },
@@ -190,7 +180,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   submitButton: {
-    backgroundColor: "#4A90E2",
+    backgroundColor: "#ea495c",
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
@@ -200,5 +190,15 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  signupContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  signupLink: {
+    color: "#ea495c",
+    fontWeight: "bold",
+    textDecorationLine: "underline",
   },
 });

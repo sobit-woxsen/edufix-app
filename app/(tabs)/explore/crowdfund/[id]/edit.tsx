@@ -107,7 +107,7 @@ export default function EditCampaign() {
             onChangeText={(text) =>
               setFormData((prev) => ({ ...prev, minContribution: text }))
             }
-            placeholder="1234567 ETH"
+            placeholder="1234567 RS. "
             keyboardType="numeric"
           />
         </View>
@@ -120,7 +120,7 @@ export default function EditCampaign() {
             onChangeText={(text) =>
               setFormData((prev) => ({ ...prev, targetAmount: text }))
             }
-            placeholder="12345678987654 ETH"
+            placeholder="12345678987654 RS. "
             keyboardType="numeric"
           />
         </View>

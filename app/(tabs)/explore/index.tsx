@@ -90,11 +90,11 @@ export default function ExploreScreen() {
   ];
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: "#FFBABA", dark: "#353636" }}
+      headerBackgroundColor={{ light: "#FFE4E4", dark: "#353636" }}
       headerImage={
         <IconSymbol
           size={310}
-          color="#808080"
+          color="#FFBABA"
           name="chevron.left.forwardslash.chevron.right"
           style={styles.headerImage}
         />
@@ -105,28 +105,6 @@ export default function ExploreScreen() {
       </ThemedView>
 
       <ThemedView style={styles.linksContainer}>
-        {/* <Link href="/explore/report">
-          <ThemedText type="link">
-            Infrastructure Report and Monitoring
-          </ThemedText>
-        </Link>
-        <Link href="/explore/crowdfund">
-          <ThemedText type="link">CSR Funding</ThemedText>
-        </Link>
-        <Link href="/explore/resource">
-          <ThemedText type="link">Resource Optimization</ThemedText>
-        </Link>
-        <Link href="/explore/feedback">
-          <ThemedText type="link">Feedback</ThemedText>
-        </Link>
-        <Link href="/explore/budget">
-          <ThemedText type="link">Budget Allocation</ThemedText>
-        </Link>
-
-        <Link href="/login" onPress={signOut}>
-          <ThemedText type="link">Sign Out</ThemedText>
-        </Link> */}
-
         {links.map((link, index) => (
           <Link
             key={index}
@@ -176,7 +154,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   headerImage: {
-    color: "#808080",
+    color: "#ee495c",
     bottom: -90,
     left: -35,
     position: "absolute",
