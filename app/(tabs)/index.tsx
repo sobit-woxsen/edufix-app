@@ -9,12 +9,15 @@ import { Button, Text } from "react-native-paper";
 
 export default function HomeScreen() {
   const { user } = useAuth();
+
+  console.log("USER: " + JSON.stringify(user));
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#fff", dark: "#fff" }}
       headerImage={
         <Image
-          source={require("@/assets/images/test.png")}
+          source={require("@/assets/images/tested.png")}
           style={styles.reactLogo}
         />
       }
@@ -26,13 +29,14 @@ export default function HomeScreen() {
 
       <View>
         <Text style={styles.title}>
-          Welcome {user?.username} <HelloWave />
+          Welcome Woxsen University
+          <HelloWave />
         </Text>
         <ThemedText style={styles.subtitle}>
-          Fixing Education in a New Way 🚀
+          Revolutionizing Education Governance
         </ThemedText>
 
-        <ThemedText style={styles.content}>
+        {/* <ThemedText style={styles.content}>
           EduFix is the revolutionary platform that redefines how education is
           delivered and experienced. Whether you're a student aiming for
           academic success, a teacher looking to inspire, or a curious mind
@@ -60,8 +64,8 @@ export default function HomeScreen() {
 
         <ThemedText style={styles.cta}>
           Join the EduFix community today and take the first step towards
-          smarter, more enjoyable learning. Let's fix education – together.
-        </ThemedText>
+          smarter, more enjoyable learning. Let's fix education – together. */}
+        {/* </ThemedText> */}
       </View>
     </ParallaxScrollView>
   );
@@ -84,7 +88,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   title: {
-    fontSize: 20,
+    fontSize: 14,
     marginBottom: 20,
   },
   subtitle: {
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: "gray",
   },
-  title: { fontSize: 28, fontWeight: "bold", marginBottom: 10, color: "#333" },
+  title: { fontSize: 24, fontWeight: "bold", marginBottom: 10, color: "#333" },
   subtitle: { fontSize: 18, marginBottom: 20, color: "#555" },
   content: { fontSize: 16, marginBottom: 20, lineHeight: 24, color: "#444" },
   features: { marginBottom: 20 },

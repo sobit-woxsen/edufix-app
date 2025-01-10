@@ -38,6 +38,8 @@ export default function FundCampaignScreen() {
     return <Text style={styles.errorText}>Campaign not found</Text>;
   }
 
+  console.log("razorpay", process.env.RAZORPAY_KEY_ID);
+
   // Razorpay HTML
   const razorpayHTML = `
     <!DOCTYPE html>
@@ -50,7 +52,7 @@ export default function FundCampaignScreen() {
       <script>
         function openRazorpay() {
           var options = {
-            key: "${RAZORPAY_KEY_ID}",
+            key: 'rzp_test_UShxSf2XlWLQB6',
             amount: ${parseInt(amount) * 100},
             currency: "INR",
             name: "Fund Campaign",

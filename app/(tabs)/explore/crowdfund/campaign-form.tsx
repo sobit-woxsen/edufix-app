@@ -98,27 +98,27 @@ export default function RequestCampaignForm() {
         </View>
 
         <View style={styles.formGroup}>
-          <Text style={styles.label}>Minimum Contribution Amount (ETH)</Text>
+          <Text style={styles.label}>Minimum Contribution Amount (in INR)</Text>
           <TextInput
             style={styles.input}
             value={formData.minContribution}
             onChangeText={(text) =>
               setFormData((prev) => ({ ...prev, minContribution: text }))
             }
-            placeholder="1234567 RS. "
+            placeholder="RS. 10,000"
             keyboardType="numeric"
           />
         </View>
 
         <View style={styles.formGroup}>
-          <Text style={styles.label}>Target Amount (ETH)</Text>
+          <Text style={styles.label}>Target Amount (in INR)</Text>
           <TextInput
             style={styles.input}
             value={formData.targetAmount}
             onChangeText={(text) =>
               setFormData((prev) => ({ ...prev, targetAmount: text }))
             }
-            placeholder="12345678987654 RS. "
+            placeholder="RS. 1,00,000"
             keyboardType="numeric"
           />
         </View>

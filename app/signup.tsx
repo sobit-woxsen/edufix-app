@@ -59,7 +59,7 @@ export default function SignupScreen() {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../assets/images/test.png")}
+        source={require("../assets/images/tested.png")}
         style={styles.logo}
       />
       <Text style={styles.title}>Create an Account</Text>
@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: "100%",
+    height: 100,
     alignSelf: "center",
     marginBottom: 20,
   },
